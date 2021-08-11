@@ -1,4 +1,5 @@
 #import <substrate.h>
+#include <dlfcn.h>
 
 #import "prefs.h"
 

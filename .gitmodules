@@ -1,3 +1,6 @@
 [submodule "framework"]
 	path = framework
 	url = git://github.com/DHowett/theos.git
+[submodule "SimPref"]
+	path = SimPref
+	url = https://github.com/PoomSmart/SimPref

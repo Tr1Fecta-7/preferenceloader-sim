@@ -1,12 +1,12 @@
 # Simulator version of PreferenceLoader
 This project aims to make testing tweak settings bundle possible on iOS simulator. [simject](https://github.com/angelXwind/simject) is required and used by this project.
 
-### Setting up simulator
-`make setup PL_SIMULATOR_VERSION=9.3` For instance, if you target iOS simulator 9.3
+With my fork i've added support for m1/arm64 devices. A patched simulator sdk is required for this and available on my repository: [ios-patched-sdks](https://github.com/Tr1Fecta-7/ios-patched-sdks)
 
-Or
+### Installation
 
-`make setup` if you specify the version in locatesim.mk
+`make setup` if you specify the version in locatesim.mk, this is not required in sims above iOS 14 as far as i know.
+
 
 ### Uninstallation
 `make remove PL_SIMULATOR_VERSION=9.3`

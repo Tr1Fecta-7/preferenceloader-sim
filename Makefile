@@ -1,5 +1,10 @@
 DEBUG = 1
-TARGET = simulator:clang:latest:8.0
+export TARGET = simulator:clang:14.5:8.0
+
+# Put the correct path for your patched simulator sdk! 
+export SYSROOT = $(THEOS)/sdks/iPhoneSimulator14.5.sdk
+export ARCHS = arm64
+
 
 include $(THEOS)/makefiles/common.mk
 
@@ -36,16 +41,16 @@ TARGET_LD := $(TARGET_LD) -L$(THEOS_OBJ_DIR)
 include locatesim.mk
 
 setup:: all
-	@[ -d $(PL_SIMULATOR_BUNDLES_PATH) ] || sudo mkdir -p $(PL_SIMULATOR_BUNDLES_PATH)
-	@[ -d $(PL_SIMULATOR_PLISTS_PATH) ] || sudo mkdir -p $(PL_SIMULATOR_PLISTS_PATH)
-	@[ -d $(PL_SIMULATOR_ROOT)/usr/lib ] || sudo mkdir -p $(PL_SIMULATOR_ROOT)/usr/lib
+	@sudo [ -d $(PL_SIMULATOR_BUNDLES_PATH) ] || sudo mkdir -p $(PL_SIMULATOR_BUNDLES_PATH)
+	@sudo [ -d $(PL_SIMULATOR_PLISTS_PATH) ] || sudo mkdir -p $(PL_SIMULATOR_PLISTS_PATH)
+	@sudo [ -d $(PL_SIMULATOR_ROOT)/usr/lib ] || sudo mkdir -p $(PL_SIMULATOR_ROOT)/usr/lib
 	@sudo cp -v $(THEOS_OBJ_DIR)/$(LIBRARY_NAME).dylib $(PL_SIMULATOR_ROOT)/usr/lib
-	@rm -f /opt/simject/$(TWEAK_NAME).dylib
-	@cp -v $(THEOS_OBJ_DIR)/$(TWEAK_NAME).dylib /opt/simject
-	@cp -v $(PWD)/$(TWEAK_NAME).plist /opt/simject
+	@sudo rm -f /opt/simject/$(TWEAK_NAME).dylib
+	@sudo cp -v $(THEOS_OBJ_DIR)/$(TWEAK_NAME).dylib /opt/simject
+	@sudo cp -v $(PWD)/$(TWEAK_NAME).plist /opt/simject
 
 remove::
-	@[ ! -d $(PL_SIMULATOR_BUNDLES_PATH) ] || sudo rm -r $(PL_SIMULATOR_BUNDLES_PATH)
-	@[ ! -d $(PL_SIMULATOR_PLISTS_PATH) ] || sudo rm -r $(PL_SIMULATOR_PLISTS_PATH)
+	@sudo [ ! -d $(PL_SIMULATOR_BUNDLES_PATH) ] || sudo rm -r $(PL_SIMULATOR_BUNDLES_PATH)
+	@sudo [ ! -d $(PL_SIMULATOR_PLISTS_PATH) ] || sudo rm -r $(PL_SIMULATOR_PLISTS_PATH)
 	@sudo rm -f $(PL_SIMULATOR_ROOT)/usr/lib/$(LIBRARY_NAME).dylib
-	@rm -f /opt/simject/$(TWEAK_NAME).dylib /opt/simject/$(TWEAK_NAME).plist
+	@sudo rm -f /opt/simject/$(TWEAK_NAME).dylib /opt/simject/$(TWEAK_NAME).plist

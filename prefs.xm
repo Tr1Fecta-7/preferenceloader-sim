@@ -3,7 +3,7 @@
 #import <Preferences/PSBundleController.h>
 #import <Preferences/PSTableCell.h>
 #import <substrate.h>
-
+#include <dlfcn.h>
 #import "prefs.h"
 
 #define DEBUG_TAG "libprefs"
