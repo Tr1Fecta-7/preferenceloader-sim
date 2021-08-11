@@ -1,11 +1,18 @@
 # Simulator version of PreferenceLoader
 This project aims to make testing tweak settings bundle possible on iOS simulator. [simject](https://github.com/angelXwind/simject) is required and used by this project.
 
-With my fork i've added support for m1/arm64 devices. A patched simulator sdk is required for this and available on my repository: [ios-patched-sdks](https://github.com/Tr1Fecta-7/ios-patched-sdks)
+With my fork i've added support for M1/arm64 devices. A patched simulator sdk is required for this and available on my repository: [ios-patched-sdks](https://github.com/Tr1Fecta-7/ios-patched-sdks)
+
+I have also included [SimPref](https://github.com/PoomSmart/SimPref) as submodule for you to easily test that the preferenceloader works. 
+
+### Download
+
+Clone the project and submodules
+`git clone --recurse-submodules --remote-submodules https://github.com/Tr1Fecta-7/preferenceloader-sim-arm64` 
 
 ### Installation
 
-`make setup` if you specify the version in locatesim.mk, this is not required in sims above iOS 14 as far as i know.
+`make setup` if you specify the version in locatesim.mk, this is not required in simulators above iOS 14 as far as i know.
 
 
 ### Uninstallation
